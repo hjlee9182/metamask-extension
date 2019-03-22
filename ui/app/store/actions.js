@@ -384,6 +384,7 @@ var actions = {
   hideSeedPhraseBackupAfterOnboarding,
   SET_SEED_PHRASE_BACKED_UP_TO_TRUE: 'SET_SEED_PHRASE_BACKED_UP_TO_TRUE',
 
+
   initializeThreeBox,
   restoreFromThreeBox,
   getThreeBoxLastUpdated,
@@ -391,6 +392,11 @@ var actions = {
   setShowRestorePromptToFalse,
   turnThreeBoxSyncingOn,
   turnThreeBoxSyncingOnAndInitialize,
+
+  waitForWyreSigRequest,
+  WAIT_FOR_WYRE_SIG_REQUEST: 'WAIT_FOR_WYRE_SIG_REQUEST',
+  stopWaitingForWyreSigRequest,
+  STOP_WAITING_FOR_WYRE_SIG_REQUEST: 'STOP_WAITING_FOR_WYRE_SIG_REQUEST',
 }
 
 module.exports = actions
@@ -2941,5 +2947,17 @@ function getNextNonce () {
         resolve(nextNonce)
       })
     })
+  }
+}
+
+function waitForWyreSigRequest () {
+  return {
+    type: actions.WAIT_FOR_WYRE_SIG_REQUEST,
+  }
+}
+
+function stopWaitingForWyreSigRequest () {
+  return {
+    type: actions.STOP_WAITING_FOR_WYRE_SIG_REQUEST,
   }
 }
